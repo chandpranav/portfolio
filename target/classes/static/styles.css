@@ -1,0 +1,895 @@
+/* Global Styles */
+
+/* Light mode defaults */
+:root {
+  --transition-speed: 0.3s;
+  --animation-speed: 1s;
+  --gradient-background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96e6a1);
+  --bg-opacity: 0;
+}
+
+body {
+  margin: 0;
+  background: var(--gradient-background);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* ensures the gradient scrolls with content */
+  transition: background 0.3s ease; /* smooth transitions between modes */
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --navbar-bg: #343a40;
+  --card-bg: #f8f9fa;
+  --hero-bg-light: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96e6a1);
+  --hero-text: #ffffff;
+  --code-bg: #f0f0f0;
+  --code-border: #dcdcdc;
+  --timeline-bg: rgba(255, 255, 255, 0.9);
+  --timeline-border: #e0e0e0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+  padding-top: 80px;
+}
+
+body.dark-mode {
+  --bg-color: #181818;
+  --text-color: #ffffff;
+  --navbar-bg: #000000;
+  --card-bg: #333333;
+  --hero-bg-dark: linear-gradient(-45deg, #4a1326, #2c1810, #0a3342, #0a4235);
+  --hero-text: #ffffff;
+  --code-bg: #1e1e1e;
+  --code-border: #2e2e2e;
+  --timeline-bg: rgba(30, 30, 30, 0.9);
+  --timeline-border: #2e2e2e;
+  --gradient-background: linear-gradient(45deg, #4a1326, #2c1810, #0a3342, #0a4235);
+  background: linear-gradient(
+    to bottom,
+    rgba(24, 24, 24, var(--bg-opacity)),
+    rgba(24, 24, 24, var(--bg-opacity))
+  ), var(--gradient-background);
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+/* Create a full-page pseudo-element overlay */
+body::before {
+  content: none !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('your-pattern.svg') repeat; /* use a subtle pattern or texture */
+  opacity: 0.1;  /* adjust opacity for subtlety */
+  z-index: -1;   /* behind all content */
+  animation: drift 30s linear infinite;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+
+/* Keyframes for a slow drifting effect */
+@keyframes drift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-100%, -100%); }
+}
+
+
+/* Enhanced Hero Section with Animation */
+.hero-section {
+  /* background: var(--hero-bg-light); */
+  background-size: 400% 400%;
+  /* animation: gradientBG 15s ease infinite; */
+  color: var(--hero-text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Smooth Element Transitions */
+.navbar, .card, .timeline-item, .code-box, button, a {
+  transition: all var(--transition-speed) ease !important;
+}
+
+/* Headline and highlight color */
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero-content h2 {
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+.hero-content .highlight {
+  color: #007bff; /* highlight color for "Pranav" */
+}
+
+/* Adjust spacing on smaller screens so the hero content is more readable */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Timeline Styles for Experience Section */
+.designation {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #007bff;
+  text-align: right;
+}
+
+.timeline {
+  border-left: 3px solid #007bff;
+  padding-left: 20px;
+}
+
+/* Enhanced Timeline Items */
+.timeline-item {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateX(0);
+  opacity: 0;
+  animation: slideIn var(--animation-speed) ease forwards;
+}
+
+.timeline-item:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Timeline Header - Aligning Job Title & Date */
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+/* Company & Date Styling */
+.company-info h4 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.company-info small {
+  color: var(--text-muted);
+}
+
+/* Smaller Text for Duties */
+.duties {
+  font-size: 0.9rem;
+  padding-left: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .designation {
+    text-align: left;
+  }
+  .timeline-item {
+    padding: 1px;
+  }
+  .duties {
+    font-size: 0.85rem;
+  }
+}
+
+/* Animated Background */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Code Box Visibility Fix */
+.code-box {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Remove animation that could cause fading issues */
+  transform: translateY(0);
+  animation: none;
+}
+
+/* Light mode specific code box styles */
+body:not(.dark-mode) .code-box {
+  opacity: 1;
+  color: #000;
+}
+
+/* Dark mode specific code box styles */
+body.dark-mode .code-box {
+  opacity: 1;
+  color: #fff;
+}
+
+.code-box:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Properly Aligned Pill Header */
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  border-radius: 50px;
+  margin: 10px auto;
+  width: 95%;
+  max-width: 1200px;
+  padding: 1rem 0;
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.3s ease;
+}
+.navbar .container {
+  padding-left: 30mm;
+  padding-right: 30mm;
+  max-width: 100%;
+}
+
+.navbar-brand {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar-nav {
+  gap: 1.5rem;
+}
+
+/* Adjust body padding to account for fixed header */
+body {
+  padding-top: 0 !important;
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 20px;
+  }
+  
+  .timeline-item {
+    margin: 10px 0;
+    padding: 15px;
+  }
+  
+  .code-box {
+    margin: 10px 0;
+    padding: 15px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Button and Link Enhancements */
+.btn, .nav-link {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-speed) ease !important;
+}
+
+.btn:hover, .nav-link:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active, .nav-link:active {
+  transform: translateY(1px);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Project Section Styling */
+.project-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* ensures full card height in its column */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h5 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.project-card p {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/**************************************
+ * Left Column: Tabs
+ **************************************/
+#experience-tabs {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Each tab button */
+.exp-btn {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  text-align: left;
+  padding: 1rem;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  border-left: 3px solid transparent;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 4px; /* so hover effect looks smooth */
+}
+
+/* Company & Duration inside button */
+.exp-btn .exp-company {
+  margin-bottom: 2px;
+}
+.exp-btn .exp-duration {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Hover & Active states */
+.exp-btn:hover {
+  background-color: rgba(255,255,255,0.07);
+  transform: translateX(3px);
+}
+.exp-btn.active {
+  border-left: 3px solid #007bff; /* accent color */
+  background-color: rgba(255,255,255,0.15);
+}
+
+/**************************************
+ * Right Column: Content
+ **************************************/
+#experience-details {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  min-height: 400px; /* so it doesn't collapse when hidden */
+}
+
+/* Hide content by default */
+.exp-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.exp-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fine-tune heading and spacing */
+.exp-content h4 {
+  font-weight: 700;
+  color: var(--text-color);
+}
+.exp-content small {
+  color: var(--text-muted);
+}
+.exp-content ul {
+  list-style: disc inside;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/***********************************
+ * Project Section & Cards
+ ***********************************/
+ .project-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* ensures full card height in its column */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h5 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.project-card p {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/***********************************
+ * Tags / "Chip" Style
+ ***********************************/
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  color: var(--text-color);
+  background-color: rgba(255, 255, 255, 0.1); /* or tweak for dark/light */
+}
+
+
+/****************************************
+ * Contact Section
+ ****************************************/
+ #contact {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/****************************************
+ * Contact Form (Left Column)
+ ****************************************/
+.contact-form {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.contact-form .form-label {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.contact-form .form-control {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+body:not(.dark-mode) .contact-form .form-control {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}
+
+/****************************************
+ * Contact Info Card (Right Column)
+ ****************************************/
+.contact-info-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.contact-info-card h5 {
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.contact-info-card p {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Adjust icon spacing */
+.contact-info-card i {
+  font-size: 1.2rem;
+  color: #9c9cff; /* or any accent color */
+}
+
+/****************************************
+ * Buttons
+ ****************************************/
+.btn-primary {
+  background-color: #6c63ff; /* example accent color */
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #5149c5;
+  transform: translateY(-2px);
+}
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.contact-info-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  /* Increase padding for a cleaner look */
+  padding: 2rem; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* Spacing between paragraphs (each contact item) */
+.contact-info-card p {
+  margin-bottom: 1rem;
+  display: flex;           /* place icon & text side by side */
+  align-items: center;
+  gap: 0.5rem;             /* small gap between icon and text */
+}
+
+/* Adjust icon styling (size, color, etc.) */
+.contact-info-card i {
+  font-size: 1.2rem;
+  color: #6c63ff; /* or your preferred accent color */
+}
+
+/* Optional: style the label text more distinctly */
+.contact-info-card strong {
+  margin-right: 0.25rem;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* behind the rest of your page */
+}
+
+/* Project Cards */
+.project-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* ensures full card height in its column */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h5 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.project-card p {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* Fade-in effect for project cards */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+/* Show effect when in viewport */
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .project-card {
+    padding: 15px;
+  }
+}
+
+/* ============================
+   Skills Section Styling
+   ============================ */
+  
+/* Cards for each skill category */
+.skill-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for skill cards */
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Title for each skill card */
+.skill-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #007bff; /* or any accent color consistent with your theme */
+  margin: 0;
+}
+
+/* Icon sizing/spacing for each skill title */
+.skill-icon {
+  font-size: 1.5rem;
+  color: #007bff; /* matching the skill title color */
+}
+
+/* Styled bullet lists for skill items */
+.skill-list {
+  padding-left: 1.2rem;
+  list-style-type: disc;
+  margin-bottom: 0;
+}
+
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-nav .nav-link {
+  color: #fff !important;
+}
+
+/* Theme Range Slider Styles */
+.theme-slider-container {
+  position: relative;
+  width: 120px;
+  margin: 0 15px;
+  padding: 0 10px;
+}
+
+.theme-range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to right, #333, #6495ED, #fff);
+  outline: none;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin: 0 10px;
+}
+
+/* Slider Thumb */
+.theme-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border: 2px solid #ddd;
+  position: relative;
+  z-index: 2;
+  transition: all 0.2s ease;
+}
+
+.theme-range-slider::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border: 2px solid #ddd;
+  position: relative;
+  z-index: 2;
+  transition: all 0.2s ease;
+}
+
+.theme-range-slider::-webkit-slider-thumb:hover,
+.theme-range-slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Theme Icons */
+.theme-icons {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.theme-icons i {
+  color: #fff;
+  font-size: 18px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.dark-icon {
+  margin-right: 10px;
+  color: #aaa !important;
+}
+
+.light-icon {
+  margin-left: 10px;
+  color: #ffcc00 !important;
+}
+
+/* Smooth transitions for theme changes */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark-mode {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Light mode specific styles */
+body:not(.dark-mode) {
+  background-color: #ffffff;
+}
+
+.code-box pre {
+  margin: 0;           /* remove default browser margins */
+  padding: 0;          /* remove any default padding */
+  line-height: 1.4;    /* control line spacing */
+  overflow-x: hidden; 
+}
+
+.code-box code {
+  display: block;      /* ensures the code lines stack vertically */
+  margin: 0;           /* remove default margin */
+  padding: 0; 
+}
+
+.code-line {
+  display: block;
+  margin: 0 !important;   /* no extra vertical gap */
+  padding: 0 !important;
+  line-height: 1.4 !important; 
+  opacity: 0;
+  transform: translateX(-60px);
+  animation: slideBounce 0.5s forwards;
+}
+
+.code-box pre,
+.code-box code {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.4 !important;
+}
+
+/* Stagger lines with nth-child */
+.code-line:nth-child(1) { animation-delay: 0s; }
+.code-line:nth-child(2) { animation-delay: 0.1s; }
+.code-line:nth-child(3) { animation-delay: 0.2s; }
+.code-line:nth-child(4) { animation-delay: 0.3s; }
+.code-line:nth-child(5) { animation-delay: 0.4s; }
+.code-line:nth-child(6) { animation-delay: 0.4s; }
+.code-line:nth-child(7) { animation-delay: 0.4s; }
+.code-line:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes slideBounce {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(5px);
+  }
+  70% {
+    transform: translateX(-1px);
+  }
+  100% {
+    opacity: 1;              
+    transform: translateX(0);
+  }
+}
+
+For experience section
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease; 
+}
+
+/* For experience section */
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}

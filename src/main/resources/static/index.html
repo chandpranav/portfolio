@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PRANAV CHAND | Full Stack Developer</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- prism-tomorrow font -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-s9vbkJXK25F14CpaenbZOyoB6aG2Bz0ZsguCe/cKXh4jPN5blb5xYCFZn/INqsG2UBosKa2FTQOe35kTt2sKdg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Smooth UI transitions */
+    a, button, input, textarea {
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Check if there is no hash in the URL
+    if (!window.location.hash) {
+      // Explicitly scroll the #home element into view
+      const homeSection = document.getElementById("home");
+      if (homeSection) {
+        homeSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  });
+</script>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Pranav Chand</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li> 
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item">
+            <!-- Dark/Light Toggle -->
+            <button 
+              type="button" 
+              class="btn btn-outline-dark ms-3" 
+              id="themeToggle">
+              <i class="bi bi-moon-fill"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- Hero Section (Landing Page) -->
+<section id="home" 
+         class="hero-section d-flex align-items-center" 
+         style="height: 100vh;">
+  <div class="container">
+    <div class="row">
+      <!-- Left Column: Headline / Sub-headline / Description -->
+      <div class="col-md-6 hero-content">
+        <!-- Tag Badges -->
+        <div class="mb-3">
+          <span class="badge bg-secondary me-2">>_I Architect the Back-End</span>
+          <span class="badge bg-secondary">&lt;/&gt;I Elevate the Front-End</span>
+        </div>
+        <h1 class="mb-3">
+          Hi, I'm <span class="highlight">Pranav</span>
+        </h1>
+        <h2 class="mb-4">I Code. I Solve. I Deliver.</h2>
+        <p class="mb-4" style="max-width: 500px;">
+          Whether it’s building new modules, integrating APIs, optimizing databases, 
+          or refactoring massive codebases—I get it done.
+          Large-scale applications? No problem. Just assign the task, and I’ll handle it.
+          I specialize in Full Stack Java but have solid knowledge across multiple technologies. 
+        </p>
+        <!-- Buttons -->
+        <div>
+          <a href="#projects" class="btn btn-primary me-2">View My Work</a>
+          <a href="#contact" class="btn btn-primary me-2">Let's Connect</a>
+        </div>
+      </div>
+
+      <!-- Right Column: Code Snippet -->
+      <div class="col-md-6 d-none d-md-block">
+        <div class="code-box">
+<pre class="m-0"><code class="language-java">
+</code><span class="code-line">class Developer implements ProblemSolver {</span>
+<span class="code-line">  private Journey journey = new Journey(</span><span class="code-line">   "California, United States",</span><span class="code-line">   "Building scalable systems",</span><span class="code-line">   new String[] { "Advance Java", "Front-end", "Database" },</span><span class="code-line"> );</span>
+<span class="code-line">}</span></code></pre>
+        </div>        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Experience Section -->
+<section id="experience" class="py-5">
+  <div class="container">
+    <h2 class="mb-4">Experience</h2>
+    <div class="timeline">
+      <!-- Capitist -->
+      <div class="timeline-item mb-4 fade-in-up">
+        <div class="timeline-header">
+          <div class="company-info">
+            <h4>Capitist LLC</h4>
+            <small class="text-muted">Jun 2022 - May 2023 | Dubai, U.A.E.</small>
+          </div>
+          <span class="designation">IT Software Analyst</span>
+        </div>
+        <ul class="duties">
+          <li>Developed trading portal modules with Java 8 Streams and lambda expressions, effectively parallelizing data operations.</li>
+          <li>Integrated Maven and Jenkins for scalable CI/CD pipelines, automating build, test, and deployment processes.</li>
+          <li>Secured portal APIs using Spring Security with OAuth2 and JWT for authentication and AES encryption for sensitive data.</li>
+          <li>Refactored monolithic codebase into a microservices architecture, adding service isolation and dependency decoupling.</li>
+          <li>Managed daily and weekly UI updates for company blog posts on the portal using advanced HTML, Bootstrap, and CSS.</li>
+        </ul>
+      </div>
+      <!-- Verasys Technologies -->
+      <div class="timeline-item mb-4 fade-in-up">
+        <div class="timeline-header">
+          <div class="company-info">
+            <h4>Verasys Technologies Ltd.</h4>
+            <small class="text-muted">Mar 2021 - Apr 2022 | Mumbai, India</small>
+          </div>
+          <span class="designation">Full Stack JAVA Developer</span>
+        </div>
+        <ul class="duties">
+          <li>Worked extensively with Spring MVC and Spring Security on portal modules, constantly refining and enhancing features.</li>
+          <li>Developed multi-level approval logic modules and workflows (email, video, and mobile) for enterprise eKYC portals.</li>
+          <li>Integrated UIDAI APIs (OTP, BIO, TOTP, FaceBio) with AES encryption, PKCS7 signatures, & SOAP/XML for data handling.</li>
+          <li>Created REST APIs for eSign (2.1 and 3.2) with HSM integration and advanced encryption/decryption mechanisms.</li>
+          <li>Designed complex stored procedures, triggers, schedulers to optimize live performance and resolved production issues.</li>
+          <li>Expertly built complex, fluid, and responsive UI pages for various modules using HTML, CSS, Bootstrap, AJAX, and
+            jQuery—earning consistent recognition for exceptional designs across all platforms of the portal.</li>
+        </ul>
+      </div>
+      <!-- Mphasis -->
+      <div class="timeline-item mb-4 fade-in-up">
+        <div class="timeline-header">
+          <div class="company-info">
+            <h4>Mphasis Ltd.</h4>
+            <small class="text-muted">Jan 2020 - Mar 2021 | Pune, India</small>
+          </div>
+          <span class="designation">Technical Software Associate</span>
+        </div>
+        <ul class="duties">
+          <li>Managed Citrix and Workspot virtual desktops, configuring secure access and automating workflows for operations.</li>
+          <li>Automated mission-critical system-level optimizations and proactive troubleshooting with custom shell scripting.</li>
+          <li>Performed log analysis and database management (HeidiSQL), creating scripts for error detection and alerts.</li>
+          <li>Led Citrix-to-Workspot VDI migration using automation scripts, patch management, and server orchestration.</li>
+          <li>Excelled as a collaborative team player, earned an appreciation letter for uplifting colleagues through effective technical
+            support and comprehensive knowledge transfers for new employees.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Projects Section -->
+<section id="projects" class="py-5">
+  <div class="container">
+  <h2 class="mb-4">Projects</h2>
+    <div class="row">
+    <!-- WeatherWise Project -->
+    <div class="col-md-6">
+      <div class="card project-card interactive mb-4 fade-in-up" style="position: relative;">
+        <div class="card-body">
+          <h5 class="card-title">WeatherWise</h5>
+          <p class="card-text">
+            Built a full-stack weather application with React (including global state via UserContext) and Node.js/Express, optimized
+            MongoDB queries with indexing and used Cron for scheduled data cleanup.
+            Implemented JWT-based authentication, real-time weather data retrieval from OpenWeather, and persistent search
+            history/favorites, offering a data-driven user experience.
+          </p>
+        </div>
+        <a href="https://weatherwise-iota.vercel.app/" 
+        target="_blank" 
+        class="live-link">
+       Live Link
+     </a>
+      </div>
+    </div>
+      <!-- Air-Traffic Delay Prediction Project -->
+      <div class="col-md-6">
+        <div class="card project-card mb-4 fade-in-up">
+          <div class="card-body">
+            <h5 class="card-title">Air-Traffic Delay Prediction</h5>
+            <p class="card-text">
+              Processed and analyzed a 12GB airline dataset using PySpark, one-hot encoding, and polynomial features.
+              Applied Ridge regression to improve model accuracy, uncovering key delay patterns for actionable insights.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-5">
+  <div class="container">
+    <h2 class="mb-5 text-center">Skills & Expertise</h2>
+    
+    <div class="row g-4"> 
+      <!-- Languages Card -->
+      <div class="col-md-4 fade-in-up">
+        <div class="skill-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-code-slash skill-icon me-2"></i>
+            <h5 class="mb-0 skill-title">Languages</h5>
+          </div>
+          <ul class="mb-0 skill-list">
+            <li>Advanced JAVA</li>
+            <li>Python</li>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Node.js, React</li>
+            <li>SQL, RDBMS</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Tools Card -->
+      <div class="col-md-4 fade-in-up">
+        <div class="skill-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-tools skill-icon me-2"></i>
+            <h5 class="mb-0 skill-title">Tools</h5>
+          </div>
+          <ul class="mb-0 skill-list">
+            <li>Eclipse, MSSQL Server</li>
+            <li>Heidi SQL, Visual Studio Code</li>
+            <li>Citrix, ServiceNow</li>
+            <li>Workspot</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Frameworks Card -->
+      <div class="col-md-4 fade-in-up">
+        <div class="skill-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-layers skill-icon me-2"></i>
+            <h5 class="mb-0 skill-title">Frameworks & Libraries</h5>
+          </div>
+          <ul class="mb-0 skill-list">
+            <li>Spring Framework, Spring Boot, Spring Security</li>
+            <li>Bootstrap, React.js, Angular.js</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row g-4 mt-4"> 
+      <!-- Databases Card -->
+      <div class="col-md-4 fade-in-up">
+        <div class="skill-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-hdd-stack skill-icon me-2"></i>
+            <h5 class="mb-0 skill-title">Databases & Big Data</h5>
+          </div>
+          <ul class="mb-0 skill-list">
+            <li>MySQL, PostgreSQL, MongoDB</li>
+            <li>Oracle Database</li>
+            <li>Apache Hadoop, Apache Spark</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Machine Learning Card -->
+      <div class="col-md-4 fade-in-up">
+        <div class="skill-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-cpu skill-icon me-2"></i>
+            <h5 class="mb-0 skill-title">Machine Learning</h5>
+          </div>
+          <ul class="mb-0 skill-list">
+            <li>scikit-learn</li>
+            <li>TensorFlow</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Project Management Card -->
+      <div class="col-md-4 fade-in-up">
+        <div class="skill-card p-4 h-100">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-kanban skill-icon me-2"></i>
+            <h5 class="mb-0 skill-title">Project Management</h5>
+          </div>
+          <ul class="mb-0 skill-list">
+            <li>Trello, Jira, Microsoft Teams</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5 bg-dark text-white">
+    <div class="container">
+      <h2 class="mb-4">Contact</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <form id="contactForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" class="form-control" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h5>Contact Information</h5>
+          <p><strong>Email:</strong> pranav.chand@yahoo.com</p>
+          <p><strong>Phone:</strong> +1-657-631-8296</p>
+          <p>
+            <strong>LinkedIn:</strong>
+            <a href="https://linkedin.com/in/pranavchand3272" target="_blank" class="text-white">pranavchand3272</a>
+          </p>
+          <p>
+            <strong>GitHub:</strong>
+            <a href="https://github.com/chandpranav" target="_blank" class="text-white">chandpranav</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JavaScript for Contact Form Submission -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value,
+      };
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+      })
+      .then((response) => response.json())
+      .then((result) => {
+        alert('Message sent successfully!');
+        document.getElementById('contactForm').reset();
+      })
+      .catch((error) => {
+        alert('Error sending message.');
+        console.error('Error:', error);
+      });
+    });
+  </script>
+
+<script>
+  // Grab the toggle button and the <body> element
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // On page load, check localStorage for a saved theme
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+    themeToggle.innerHTML = '<i class="bi bi-sun-fill" style="color: #fff;"></i>';
+  } else {
+    themeToggle.innerHTML = '<i class="bi bi-moon-fill"></i>';
+    themeToggle.innerHTML = '<i class="bi bi-moon-fill" style="color: #fff;"></i>';
+  }
+
+  themeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  if (body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark');
+    // Use a sun icon with white color in dark mode
+    themeToggle.innerHTML = '<i class="bi bi-sun-fill" style="color: #fff;"></i>';
+  } else {
+    localStorage.setItem('theme', 'light');
+    // Use a moon icon with black color in light mode
+    themeToggle.innerHTML = '<i class="bi bi-moon-fill" style="color: #fff;"></i>';
+  }
+});
+
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Grab all the fade-in-up elements
+    const faders = document.querySelectorAll('.fade-in-up');
+
+    // Create an IntersectionObserver
+    const options = {
+      threshold: 0.1 // trigger when 10% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Add the .show class
+          entry.target.classList.add('show');
+          // Stop observing once it’s visible (so it doesn’t hide again)
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    // Observe each .fade-in-up element
+    faders.forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    message: document.getElementById('message').value,
+  };
+
+  fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+  .then(response => response.text())
+  .then(result => {
+    alert('Message sent successfully!');
+    document.getElementById('contactForm').reset();
+  })
+  .catch(error => {
+    alert('Error sending message.');
+    console.error(error);
+  });
+});
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-9W+N7Y65y2v0iZgE/CSldkFT63dLqJFGqmv+f9M0GfXU0WrRfGy0TBCz30HcfX2x1NjK82dZlmAK5wOuwG6/3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>

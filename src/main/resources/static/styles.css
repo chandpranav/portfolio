@@ -1,0 +1,392 @@
+/* Global Styles */
+
+/* Light mode defaults */
+body {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --navbar-bg: #343a40;
+  --card-bg: #f8f9fa;
+  --hero-bg: #f8f9fa;
+  --hero-text: #000000;
+  --code-bg: #f0f0f0; /* Light gray code box background */
+  --code-border: #dcdcdc;  
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body.dark-mode {
+  --bg-color: #181818;
+  --text-color: #ffffff;
+  --navbar-bg: #000000;
+  --card-bg: #333333;
+  --hero-bg: #0D1117;
+  --hero-text: #ffffff;
+  --code-bg: #1e1e1e; /* Dark “VS Code–like” code box background */
+  --code-border: #2e2e2e;
+}
+  
+  /* Hero Section */
+  .hero-section {
+    background-color: var(--hero-bg);
+    color: var(--hero-text);
+    position: relative;
+    padding-top: 80px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hero-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Headline and highlight color */
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero-content h2 {
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+.hero-content .highlight {
+  color: #007bff; /* highlight color for "Pranav" */
+}
+
+/* Adjust spacing on smaller screens so the hero content is more readable */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content h2 {
+    font-size: 1.4rem;
+  }
+}
+  
+  /* Timeline Styles for Experience Section */
+  .designation {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #007bff;
+    text-align: right;
+  }
+
+  .timeline {
+    border-left: 3px solid #007bff;
+    padding-left: 20px;
+  }
+  .timeline-item {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .timeline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Timeline Header - Aligning Job Title & Date */
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+/* Company & Date Styling */
+.company-info h4 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.company-info small {
+  color: var(--text-muted);
+}
+
+/* Smaller Text for Duties */
+.duties {
+  font-size: 0.9rem;
+  padding-left: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .designation {
+    text-align: left;
+  }
+  .timeline-item {
+    padding: 1px;
+  }
+  .duties {
+    font-size: 0.85rem;
+  }
+}
+  
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px); 
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); 
+    }
+  }
+  
+  .hero-content {
+    animation: fadeInDown 1s ease forwards;
+  }
+  
+.navbar {
+  background-color: #0D1117 !important;  
+  border-bottom: 1px solid #333;         
+  margin-bottom: 1px;
+  padding-top: 80px; 
+  margin-top: -80px;
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-nav .nav-link {
+  color: #fff !important;
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.code-box {
+  background-color: var(--code-bg);
+  border: none;
+  border-radius: 6px;
+  overflow: auto;
+  padding: 16px;
+  animation: fadeInUp 0.6s ease-out;
+  border: 1px solid var(--code-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.code-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.code-box pre {
+  margin: 0;           /* remove default browser margins */
+  padding: 0;          /* remove any default padding */
+  line-height: 1.4;    /* control line spacing */
+  overflow-x: hidden; 
+}
+
+.code-box code {
+  display: block;      /* ensures the code lines stack vertically */
+  margin: 0;           /* remove default margin */
+  padding: 0; 
+}
+
+.code-line {
+  display: block;
+  margin: 0 !important;   /* no extra vertical gap */
+  padding: 0 !important;
+  line-height: 1.4 !important; 
+  opacity: 0;
+  transform: translateX(-60px);
+  animation: slideBounce 0.5s forwards;
+}
+
+.code-box pre,
+.code-box code {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.4 !important;
+}
+
+/* Stagger lines with nth-child */
+.code-line:nth-child(1) { animation-delay: 0s; }
+.code-line:nth-child(2) { animation-delay: 0.1s; }
+.code-line:nth-child(3) { animation-delay: 0.2s; }
+.code-line:nth-child(4) { animation-delay: 0.3s; }
+.code-line:nth-child(5) { animation-delay: 0.4s; }
+.code-line:nth-child(6) { animation-delay: 0.4s; }
+.code-line:nth-child(7) { animation-delay: 0.4s; }
+.code-line:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes slideBounce {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(5px);
+  }
+  70% {
+    transform: translateX(-1px);
+  }
+  100% {
+    opacity: 1;              
+    transform: translateX(0);
+  }
+}
+
+/* For experience section */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease; 
+}
+
+/* For experience section */
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item.fade-in-up:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.timeline-item.fade-in-up:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.timeline-item.fade-in-up:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+
+  /* Project Section Styling */
+.project-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Fade-in effect for project cards */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+/* Show effect when in viewport */
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .project-card {
+    padding: 15px;
+  }
+}
+
+/* ============================
+   Skills Section Styling
+   ============================ 
+  
+  /* Cards for each skill category */
+  .skill-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Hover effect for skill cards */
+  .skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Title for each skill card */
+  .skill-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #007bff; /* or any accent color consistent with your theme */
+    margin: 0;
+  }
+  
+  /* Icon sizing/spacing for each skill title */
+  .skill-icon {
+    font-size: 1.5rem;
+    color: #007bff; /* matching the skill title color */
+  }
+  
+  /* Styled bullet lists for skill items */
+  .skill-list {
+    padding-left: 1.2rem;
+    list-style-type: disc;
+    margin-bottom: 0;
+  }
+  /* Interactive project card overlay (applies only to cards with .interactive) */
+.project-card.interactive {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark overlay effect on interactive cards using ::before */
+.project-card.interactive::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  transition: background 0.3s ease;
+  z-index: 1; /* behind the live-link */
+}
+
+.project-card.interactive:hover::before {
+  background: rgba(0, 0, 0, 0.8); /* Darker overlay */
+}
+
+/* Centered "Live Link" text overlay for interactive cards */
+.project-card.interactive .live-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  opacity: 0;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+/* Reveal the "Live Link" text when hovering on an interactive card */
+.project-card.interactive:hover .live-link {
+  opacity: 1;
+}
