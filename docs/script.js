@@ -1,16 +1,43 @@
 let camera, scene, renderer, material;
 let mouseX = 0, mouseY = 0;
+let targetX = 0, targetY = 0;
 let windowHalfX = window.innerWidth / 2;
 let windowHalfY = window.innerHeight / 2;
 let particles, lines;
 let isDarkMode = localStorage.getItem('theme') === 'dark';
+let isTouch = false;
 
 init();
 animate();
 
 document.addEventListener('DOMContentLoaded', () => {
   window.scrollTo(0, 0);  // always reset to top on reload
+  
+  // Check if device is touch-enabled
+  isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  
+  // Add touch event listeners if it's a touch device
+  if (isTouch) {
+    document.addEventListener('touchstart', onTouchStart);
+    document.addEventListener('touchmove', onTouchMove);
+  }
 });
+
+function onTouchStart(event) {
+  if (event.touches.length === 1) {
+    event.preventDefault();
+    mouseX = event.touches[0].pageX - windowHalfX;
+    mouseY = event.touches[0].pageY - windowHalfY;
+  }
+}
+
+function onTouchMove(event) {
+  if (event.touches.length === 1) {
+    event.preventDefault();
+    mouseX = event.touches[0].pageX - windowHalfX;
+    mouseY = event.touches[0].pageY - windowHalfY;
+  }
+}
 
 /* =============================
    1. INITIAL THREE.JS SETUP
@@ -36,12 +63,13 @@ function init() {
   // Set initial visibility based on theme
   updateParticleSystem(isDarkMode);
 
-  // 6. Renderer
+  // 6. Renderer with mobile optimizations
   renderer = new THREE.WebGLRenderer({ 
-    antialias: true,
-    alpha: true 
+    antialias: window.innerWidth > 768,  // Disable antialiasing on mobile
+    alpha: true,
+    powerPreference: "high-performance"
   });
-  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for better performance
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0x000000, 0);
 
@@ -50,7 +78,9 @@ function init() {
 
   // 8. Interaction + resize events
   document.body.style.touchAction = 'none';
-  document.addEventListener('pointermove', onPointerMove);
+  if (!isTouch) {
+    document.addEventListener('pointermove', onPointerMove);
+  }
   window.addEventListener('resize', onWindowResize);
 }
 
@@ -82,7 +112,7 @@ function createParticles() {
 
 function updateParticleColors(isDark) {
   if (material) {
-    color: isDarkMode ? 0xffffff : 0x000000  
+    material.color.setHex(isDark ? 0xffffff : 0x000000);
   }
 }
 
@@ -171,17 +201,25 @@ function animate() {
 }
 
 function render() {
-  camera.position.x += (mouseX * 0.05 - camera.position.x) * 0.01;
-  camera.position.y += (-mouseY * 0.05 - camera.position.y) * 0.01;
+  // Smooth camera movement
+  targetX = mouseX * 0.001;
+  targetY = mouseY * 0.001;
+  
+  camera.position.x += (targetX - camera.position.x) * 0.01;
+  camera.position.y += (-targetY - camera.position.y) * 0.01;
+  
+  // Reduce rotation speed on mobile
+  const rotationSpeed = isTouch ? 0.0005 : 0.001;
+  const lineRotationSpeed = isTouch ? 0.0002 : 0.0005;
   
   if (particles) {
-    particles.rotation.y += 0.001;
-    particles.rotation.x += 0.0005;
+    particles.rotation.y += rotationSpeed;
+    particles.rotation.x += rotationSpeed * 0.5;
   }
   
   if (lines) {
-    lines.rotation.y += 0.0005;
-    lines.rotation.x += 0.0002;
+    lines.rotation.y += lineRotationSpeed;
+    lines.rotation.x += lineRotationSpeed * 0.5;
   }
   
   camera.lookAt(scene.position);
