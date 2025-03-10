@@ -77,12 +77,12 @@
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item">
-            <!-- Dark/Light Toggle -->
-            <div class="theme-slider-container ms-3">
-              <div class="theme-icons">
-                <i class="bi bi-moon-fill dark-icon"></i>
-                <input type="range" min="0" max="100" value="0" class="theme-range-slider" id="themeSlider">
+            <!-- Dark/Light Toggle Pill -->
+            <div class="theme-pill-container">
+              <div class="theme-pill">
                 <i class="bi bi-sun-fill light-icon"></i>
+                <input type="range" min="0" max="100" value="0" class="theme-pill-slider" id="themeSlider">
+                <i class="bi bi-moon-fill dark-icon"></i>
               </div>
             </div>
           </li>
@@ -94,9 +94,8 @@
   <!-- Hero Section (Landing Page) -->
   <section id="home" class="hero-section d-flex align-items-center" style="height: 100vh;">
     <div class="container">
-      <div class="row">
-        <!-- Left Column: Headline / Sub-headline / Description -->
-        <div class="col-md-6 hero-content">
+      <div class="row justify-content-center text-center">
+        <div class="col-md-8 hero-content">
           <!-- Tag Badges -->
           <div class="mb-3">
             <span class="badge bg-secondary me-2">>_I Architect the Back-End</span>
@@ -104,28 +103,10 @@
           </div>
           <h1 class="mb-3">Hi, I'm <span class="highlight">Pranav</span></h1>
           <h2 class="mb-4">I Code. I Solve. I Deliver.</h2>
-          <p class="mb-4" style="max-width: 500px;">
-            Whether it’s building new modules, integrating APIs, optimizing databases, or refactoring massive codebases—I get it done.
-            Large-scale applications? No problem. Just assign the task, and I’ll handle it.
-          </p>
           <!-- Buttons -->
           <div>
             <a href="#projects" class="btn btn-primary me-2">View My Work</a>
             <a href="#contact" class="btn btn-primary me-2">Let's Connect</a>
-          </div>
-        </div>
-        <!-- Right Column: Code Snippet -->
-        <div class="col-md-6 d-none d-md-block">
-          <div class="code-box">
-            <pre class="m-0"><code class="language-java">
-class Developer implements ProblemSolver {
-  private Journey journey = new Journey(
-    "California, United States",
-    "Building scalable systems",
-    new String[] { "Advance Java", "Front-end", "Database" }
-  );
-}
-            </code></pre>
           </div>
         </div>
       </div>
@@ -139,59 +120,67 @@ class Developer implements ProblemSolver {
       <div class="row">
         <!-- Left Column: Stacked Company Tabs -->
         <div class="col-md-4" id="experience-tabs">
-          <button class="exp-btn active" data-target="capitist">Capitist LLC</button>
-          <button class="exp-btn" data-target="verasys">Verasys Technologies Ltd.</button>
-          <button class="exp-btn" data-target="mphasis">Mphasis Ltd.</button>
+          <button class="exp-btn active d-flex justify-content-between align-items-center w-100" data-target="capitist">
+            <img src="/capitist.png" alt="Capitist Logo" style="height: 20px;">
+            <span>Capitist Software and Technologies</span>
+          </button>
+          <button class="exp-btn active d-flex justify-content-between align-items-center w-100" data-target="verasys">
+            <img src="/verasys.png" alt="Verasys Logo" style="height: 20px;">
+            <span>Verasys Technologies Ltd.</span>
+          </button>
+          <button class="exp-btn active d-flex justify-content-between align-items-center w-100" data-target="mphasis">
+            <img src="/mphasis.png" alt="Mphasis Logo" style="height: 20px;">
+            <span>Mphasis Ltd.</span>
+          </button>
         </div>
         <!-- Right Column: Dynamic Details -->
         <div class="col-md-8">
           <!-- Capitist LLC -->
           <div class="exp-content active" id="capitist">
-            <h4 class="mb-2">
+            <h4 style="display: flex; justify-content: space-between;" class="mb-2">
               IT Software Analyst 
-              <small class="text-muted d-block">
+              <small class="text-muted">
                 Jun 2022 - May 2023 | Dubai, U.A.E.
               </small>
             </h4>
             <ul>
-              <li>Developed trading portal modules with Java 8 Streams and lambda expressions, effectively parallelizing data operations.</li>
-              <li>Integrated Maven and Jenkins for scalable CI/CD pipelines, automating build, test, and deployment processes.</li>
-              <li>Secured portal APIs using Spring Security with OAuth2 and JWT for authentication and AES encryption for sensitive data.</li>
-              <li>Refactored monolithic codebase into a microservices architecture, adding service isolation and dependency decoupling.</li>
-              <li>Managed daily and weekly UI updates for company blog posts on the portal using advanced HTML, Bootstrap, and CSS.</li>
+              <li>Engineered microservices using Spring Boot for back-end services and React.js for dynamic, responsive user interfaces.</li>
+              <li>Transformed nested codebases into 12+ containerized components using Docker & Kubernetes, improving scalability.</li>
+              <li>Worked extensively with AWS (EC2, S3) and Azure Kubernetes for scalable container management, deploying dynamic
+                auto-scaling to support over 3,000 daily symbols execution and reduce monthly cloud costs by $3K.</li>
+              <li>Built Jenkins pipelines to deploy 15+ APIs and data workflows, collaborating with cross-functional teams in Agile setup.</li>
+              <li>Enhanced CI/CD with SonarQube integration, multi-level testing (unit, UAT, DC, DR) and ensuring zero downtime.</li>
             </ul>
           </div>
           <!-- Verasys Technologies -->
           <div class="exp-content" id="verasys">
-            <h4 class="mb-2">
+            <h4 style="display: flex; justify-content: space-between;" class="mb-2">
               Full Stack JAVA Developer
-              <small class="text-muted d-block">
+              <small class="text-muted">
                 Mar 2021 - Apr 2022 | Mumbai, India
               </small>
             </h4>
             <ul>
-              <li>Worked extensively with Spring MVC and Spring Security on portal modules.</li>
-              <li>Developed multi-level approval logic modules and workflows for enterprise eKYC portals.</li>
-              <li>Integrated UIDAI APIs with AES encryption and SOAP/XML for data handling.</li>
-              <li>Created REST APIs with HSM integration and advanced encryption/decryption mechanisms.</li>
-              <li>Designed complex stored procedures, triggers, and schedulers to optimize performance.</li>
-              <li>Built responsive UI pages using HTML, CSS, Bootstrap, AJAX, and jQuery.</li>
+              <li>Integrated APIs (OTP, BIO, TOTP) with AES encryption, PKCS7 signatures, and SOAP/XML, with 100% data integrity</li>
+              <li>Built REST APIs for eSign (2.1 & 3.2) with HSM integration, implementing advanced encryption for secure transactions</li>
+              <li>Optimized database by updating stored procedures, triggers, and schedulers, reducing query execution time by 40%</li>
+              <li>Enhanced portal modules using Spring MVC and Spring Security, optimizing features for performance and security</li>
+              <li>Developed dynamic, responsive UI using HTML, CSS, Bootstrap, AJAX, and jQuery, delivering highly rated UX platforms</li>
             </ul>
           </div>
           <!-- Mphasis Ltd. -->
           <div class="exp-content" id="mphasis">
-            <h4 class="mb-2">
-              Technical Software Associate 
-              <small class="text-muted d-block">
+            <h4 style="display: flex; justify-content: space-between;" class="mb-2">
+              Technical Software Associate
+              <small class="text-muted">
                 Jan 2020 - Mar 2021 | Pune, India
               </small>
             </h4>
             <ul>
-              <li>Managed virtual desktops, configuring secure access and automating workflows.</li>
-              <li>Automated system-level optimizations with custom shell scripting.</li>
-              <li>Performed log analysis and database management with error detection scripts.</li>
-              <li>Led Citrix-to-Workspot VDI migration using automation and patch management.</li>
-              <li>Collaborated to uplift colleagues through effective technical support.</li>
+              <li>Spearheaded patch management and server orchestration for American bank client, leveraging PowerShell scripting and VDI optimization, reducing deployment time by 50% while ensuring SLA compliant environment</li>
+              <li>Automated system-level optimizations and troubleshooting with custom shell scripting.</li>
+              <li>Performed log analysis and database management (HeidiSQL), developing scripts for real-time error detection</li>
+              <li>Recognized for supporting peers and delivering technical support, earning an appreciation letter for contributions</li>
             </ul>
           </div>
         </div>
@@ -199,45 +188,117 @@ class Developer implements ProblemSolver {
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="py-5 fade-in-up">
-    <div class="container">
-      <h2 class="mb-4 text-center">Featured Projects</h2>
-      <div class="row">
-        <!-- WeatherWise Project Card -->
-        <div class="col-md-6 mb-4">
-          <div class="project-card">
-            <h5>WeatherWise</h5>
-            <p>
-              Built a full-stack weather application with React and Node.js/Express. Optimized MongoDB queries and implemented JWT-based authentication with persistent search history.
-            </p>
-            <div class="project-tags">
-              <span class="tag">React</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">MongoDB</span>
-              <span class="tag">JWT</span>
-              <span class="tag">OpenWeather API</span>
-            </div>
+<!-- Projects Section -->
+<section id="projects" class="py-5 fade-in-up">
+  <div class="container">
+    <h2 class="mb-4 text-center">Featured Projects</h2>
+    <div class="row">
+      <!-- WeatherWise Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>WeatherWise</h5>
+          <small class="text-muted">Mar 2024–Apr 2024</small>
+          <p>
+            Developed a full-stack weather platform using React (Context-based user management, React Router, localStorage) and Node.js/Express (RESTful routes, CORS), integrating MongoDB (Mongoose for user/favorites/search logs). Implemented JWT user sessions with bcrypt password hashing, scheduled data cleanup via node-cron, and consumed OpenWeather API for real-time forecasts.
+          </p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Bcrypt</span>
+            <span class="tag">JWT</span>
+            <span class="tag">Cron</span>
+            <span class="tag">OpenWeather API</span>
           </div>
         </div>
-        <!-- Air-Traffic Delay Prediction Project Card -->
-        <div class="col-md-6 mb-4">
-          <div class="project-card">
-            <h5>Air-Traffic Delay Prediction</h5>
-            <p>
-              Processed a 12GB airline dataset using PySpark and polynomial features. Applied Ridge regression to uncover key delay patterns.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">PySpark</span>
-              <span class="tag">Machine Learning</span>
-              <span class="tag">Data Analysis</span>
-            </div>
+      </div>
+      <!-- City Navigation & Emergency Route Planning Tool Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>City Navigation & Emergency Route Planning Tool</h5>
+          <small class="text-muted">Feb 2024–Mar 2024</small>
+          <p>
+            Engineered a City Navigation & Emergency Route Planning Tool with all-pairs shortest path computation, integrating OSMnx and NetworkX for graph-based road network modeling. Developed a Flask-based API to handle real-time requests, with Leaflet.js for interactive route visualization. Enabled dynamic blockage simulation, recalculating minimal routes by modifying graph weights and re-running Floyd-Warshall for real-time emergency response routing.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">OSMnx</span>
+            <span class="tag">NetworkX</span>
+            <span class="tag">Leaflet.js</span>
+          </div>
+        </div>
+      </div>
+      <!-- Optimal Delivery Route System Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>Optimal Delivery Route System</h5>
+          <small class="text-muted">Jan 2024–Feb 2024</small>
+          <p>
+            Developed a Traveling Salesperson Problem route optimization application using Nearest Neighbor, Brute Force, and Minimum Spanning Tree algorithms to compute and visualize efficient multi-stop delivery routes. Leveraged Google Maps DistanceMatrix for real-time distance calculations and used React with Chakra UI for interactive map rendering, enabling multi-route comparisons for logistic route planning.
+          </p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">Python</span>
+            <span class="tag">Google Maps API</span>
+            <span class="tag">Chakra UI</span>
+            <span class="tag">Chart.js</span>
+          </div>
+        </div>
+      </div>
+      <!-- SEO Keyword Tracker and Analyzer Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>SEO Keyword Tracker and Analyzer</h5>
+          <small class="text-muted">Mar 2024–Apr 2024</small>
+          <p>
+            Developed an interactive Search Engine Optimization (SEO) tool integrating multiple text-search algorithms (Rabin-Karp, Suffix Tree, Suffix Array, Naive String Matching, Knuth-Morris-Pratt (KMP)) for real-time keyword frequency extraction, WordCloud visualization, and performance comparison, leveraging Streamlit for a user-friendly interface, Natural Language Toolkit (NLTK) for text preprocessing, and BeautifulSoup for HTML parsing.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">WordCloud</span>
+            <span class="tag">BeautifulSoup</span>
+            <span class="tag">NLTK</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sorting Algorithm Efficiency Analyzer Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>Sorting Algorithm Efficiency Analyzer</h5>
+          <small class="text-muted">Apr 2024–May 2024</small>
+          <p>
+            Developed a GUI-based sorting algorithm analyzer integrating Bubble Sort, Insertion Sort, QuickSort, Heap Sort, Counting Sort, Radix Sort, Bucket Sort, and QuickSelect for performance benchmarking on user-defined datasets. Leveraged PyQt5 for interactive selection, Matplotlib with Seaborn for real-time execution time visualization, and implemented animated bar and line charts to compare sorting efficiencies dynamically.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">PyQt5</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Seaborn</span>
+          </div>
+        </div>
+      </div>
+      <!-- Airline Delay Prediction Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>Airline Delay Prediction</h5>
+          <small class="text-muted">Jan 2024–Jun 2024</small>
+          <p>
+            Developed an extensive big data pipeline for airline departure delay prediction using Python, Jupyter Notebook, Apache Spark/PySpark, and HDFS—performing rigorous data scrubbing, ETL (Extract, Transform, Load) with Pandas/NumPy, and distributed processing for high-quality insights. Engineered end-to-end Machine Learning workflows integrating polynomial features, Ridge regression, one-hot encoding, hyperparameter tuning (GridSearchCV/RandomizedSearchCV), and cross-validation, achieving a 35% boost in predictive accuracy.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Jupyter Notebook</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">scikit-learn</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Skills Section -->
   <section id="skills" class="py-5">
@@ -333,56 +394,100 @@ class Developer implements ProblemSolver {
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-5 fade-in-up">
-    <div class="container">
-      <h2 class="mb-4">Contact</h2>
-      <div class="row g-4">
-        <!-- Left Column: Contact Form -->
-        <div class="col-md-6">
-          <form id="contactForm" class="contact-form">
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Your name" required />
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Your email" required />
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea class="form-control" id="message" rows="5" placeholder="Your message" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary mt-2">
-              Send Message <i class="bi bi-send ms-1"></i>
-            </button>
-          </form>
-        </div>
-        <!-- Right Column: Contact Info Card -->
-        <div class="col-md-6">
-          <div class="contact-info-card p-4">
-            <h5 class="mb-3">Contact Information</h5>
+<!-- Contact Section -->
+<section id="contact" class="py-5 fade-in-up">
+  <div class="container">
+    <h2 class="mb-4">Contact</h2>
+    <div class="row g-4">
+      <!-- Left Column: Contact Form -->
+      <div class="col-md-6">
+        <form id="contactForm" class="contact-form">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="name" 
+              placeholder="Your name" 
+              required 
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input 
+              type="email" 
+              class="form-control" 
+              id="email" 
+              placeholder="Your email" 
+              required 
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea 
+              class="form-control" 
+              id="message" 
+              rows="5" 
+              placeholder="Your message" 
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">
+            Send Message <i class="bi bi-send ms-1"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: Contact Info Card -->
+      <div class="col-md-6">
+        <!-- Modern Card with Shadow -->
+        <div class="card shadow-sm contact-info-card">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Contact Information</h5>
+            
             <p class="mb-2">
               <i class="bi bi-envelope me-2"></i>
-              <strong>Email:</strong> pranav.chand@yahoo.com
+              <strong>Email:</strong>
+              <!-- Email link -->
+              <a href="mailto:pranav.chand@yahoo.com">pranav.chand@yahoo.com</a>
             </p>
+            
             <p class="mb-2">
               <i class="bi bi-telephone-fill me-2"></i>
               <strong>Phone:</strong> +1-657-631-8296
             </p>
+            
             <p class="mb-2">
               <i class="bi bi-linkedin me-2"></i>
-              <strong>LinkedIn:</strong> pranavchand3272
+              <strong>LinkedIn:</strong>
+              <!-- LinkedIn hyperlink -->
+              <a 
+                href="https://www.linkedin.com/in/pranavchand3272" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                pranavchand3272
+              </a>
             </p>
+            
             <p>
               <i class="bi bi-github me-2"></i>
-              <strong>GitHub:</strong> chandpranav
+              <strong>GitHub:</strong>
+              <!-- GitHub hyperlink -->
+              <a 
+                href="https://github.com/chandpranav" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                chandpranav
+              </a>
             </p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

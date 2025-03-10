@@ -10,8 +10,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <!-- prism-tomorrow font -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-s9vbkJXK25F14CpaenbZOyoB6aG2Bz0ZsguCe/cKXh4jPN5blb5xYCFZn/INqsG2UBosKa2FTQOe35kTt2sKdg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Prism Tomorrow Theme for Code Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" 
+        integrity="sha512-s9vbkJXK25F14CpaenbZOyoB6aG2Bz0ZsguCe/cKXh4jPN5blb5xYCFZn/INqsG2UBosKa2FTQOe35kTt2sKdg==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css" />
   <style>
@@ -19,30 +21,55 @@
     a, button, input, textarea {
       transition: all 0.3s ease;
     }
+    /* Theme Slider Styles */
+    .theme-slider-container {
+      position: relative;
+      display: inline-block;
+    }
+    .theme-range-slider {
+      width: 100px;
+      height: 10px;
+      margin: 0;
+      padding: 0;
+      border-radius: 5px;
+      background-color: #ccc;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .theme-icons {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      color: #666;
+    }
+    .theme-icons i {
+      margin: 0 5px;
+    }
+    .dark-icon {
+      position: absolute;
+      left: 0;
+    }
+    .light-icon {
+      position: absolute;
+      right: 0;
+    }
+    /* Theme Transition Styles */
+    :root {
+      --theme-transition: 0%;
+    }
+    .dark-mode {
+      transition: background-color var(--theme-transition), color var(--theme-transition);
+    }
   </style>
 </head>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Check if there is no hash in the URL
-    if (!window.location.hash) {
-      // Explicitly scroll the #home element into view
-      const homeSection = document.getElementById("home");
-      if (homeSection) {
-        homeSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  });
-</script>
 <body>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#home">Pranav Chand</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav w-100 justify-content-evenly">
           <li class="nav-item"><a class="nav-link" href="#home">Home</a></li> 
           <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
@@ -50,159 +77,410 @@
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item">
-            <!-- Dark/Light Toggle -->
-            <button 
-              type="button" 
-              class="btn btn-outline-dark ms-3" 
-              id="themeToggle">
-              <i class="bi bi-moon-fill"></i>
-            </button>
+            <!-- Dark/Light Toggle Pill -->
+            <div class="theme-pill-container">
+              <div class="theme-pill">
+                <i class="bi bi-sun-fill light-icon"></i>
+                <input type="range" min="0" max="100" value="0" class="theme-pill-slider" id="themeSlider">
+                <i class="bi bi-moon-fill dark-icon"></i>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-<!-- Hero Section (Landing Page) -->
-<section id="home" 
-         class="hero-section d-flex align-items-center" 
-         style="height: 100vh;">
-  <div class="container">
-    <div class="row">
-      <!-- Left Column: Headline / Sub-headline / Description -->
-      <div class="col-md-6 hero-content">
-        <!-- Tag Badges -->
-        <div class="mb-3">
-          <span class="badge bg-secondary me-2">>_I Architect the Back-End</span>
-          <span class="badge bg-secondary">&lt;/&gt;I Elevate the Front-End</span>
+  <!-- Hero Section (Landing Page) -->
+  <section id="home" class="hero-section d-flex align-items-center" style="height: 100vh;">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-md-8 hero-content">
+          <!-- Tag Badges -->
+          <div class="mb-3">
+            <span class="badge bg-secondary me-2">>_I Architect the Back-End</span>
+            <span class="badge bg-secondary">&lt;/&gt;I Elevate the Front-End</span>
+          </div>
+          <h1 class="mb-3">Hi, I'm <span class="highlight">Pranav</span></h1>
+          <h2 class="mb-4">I Code. I Solve. I Deliver.</h2>
+          <!-- Buttons -->
+          <div>
+            <a href="#projects" class="btn btn-primary me-2">View My Work</a>
+            <a href="#contact" class="btn btn-primary me-2">Let's Connect</a>
+          </div>
         </div>
-        <h1 class="mb-3">
-          Hi, I'm <span class="highlight">Pranav</span>
-        </h1>
-        <h2 class="mb-4">I Code. I Solve. I Deliver.</h2>
-        <p class="mb-4" style="max-width: 500px;">
-          Whether it’s building new modules, integrating APIs, optimizing databases, 
-          or refactoring massive codebases—I get it done.
-          Large-scale applications? No problem. Just assign the task, and I’ll handle it.
-          I specialize in Full Stack Java but have solid knowledge across multiple technologies. 
-        </p>
-        <!-- Buttons -->
-        <div>
-          <a href="#projects" class="btn btn-primary me-2">View My Work</a>
-          <a href="#contact" class="btn btn-primary me-2">Let's Connect</a>
-        </div>
-      </div>
-
-      <!-- Right Column: Code Snippet -->
-      <div class="col-md-6 d-none d-md-block">
-        <div class="code-box">
-<pre class="m-0"><code class="language-java">
-</code><span class="code-line">class Developer implements ProblemSolver {</span>
-<span class="code-line">  private Journey journey = new Journey(</span><span class="code-line">   "California, United States",</span><span class="code-line">   "Building scalable systems",</span><span class="code-line">   new String[] { "Advance Java", "Front-end", "Database" },</span><span class="code-line"> );</span>
-<span class="code-line">}</span></code></pre>
-        </div>        
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- Experience Section -->
-<section id="experience" class="py-5">
-  <div class="container">
-    <h2 class="mb-4">Experience</h2>
-    <div class="timeline">
-      <!-- Capitist -->
-      <div class="timeline-item mb-4 fade-in-up">
-        <div class="timeline-header">
-          <div class="company-info">
-            <h4>Capitist LLC</h4>
-            <small class="text-muted">Jun 2022 - May 2023 | Dubai, U.A.E.</small>
-          </div>
-          <span class="designation">IT Software Analyst</span>
+  <!-- Experience Section -->
+  <section id="experience" class="py-5 fade-in-up">
+    <div class="container">
+      <h2 class="text-center mb-5">Experience</h2>
+      <div class="row">
+        <!-- Left Column: Stacked Company Tabs -->
+        <div class="col-md-4" id="experience-tabs">
+          <button class="exp-btn active d-flex justify-content-between align-items-center w-100" data-target="capitist">
+            <img src="/capitist.png" alt="Capitist Logo" style="height: 20px;">
+            <span>Capitist Software and Technologies</span>
+          </button>
+          <button class="exp-btn active d-flex justify-content-between align-items-center w-100" data-target="verasys">
+            <img src="/verasys.png" alt="Verasys Logo" style="height: 20px;">
+            <span>Verasys Technologies Ltd.</span>
+          </button>
+          <button class="exp-btn active d-flex justify-content-between align-items-center w-100" data-target="mphasis">
+            <img src="/mphasis.png" alt="Mphasis Logo" style="height: 20px;">
+            <span>Mphasis Ltd.</span>
+          </button>
         </div>
-        <ul class="duties">
-          <li>Developed trading portal modules with Java 8 Streams and lambda expressions, effectively parallelizing data operations.</li>
-          <li>Integrated Maven and Jenkins for scalable CI/CD pipelines, automating build, test, and deployment processes.</li>
-          <li>Secured portal APIs using Spring Security with OAuth2 and JWT for authentication and AES encryption for sensitive data.</li>
-          <li>Refactored monolithic codebase into a microservices architecture, adding service isolation and dependency decoupling.</li>
-          <li>Managed daily and weekly UI updates for company blog posts on the portal using advanced HTML, Bootstrap, and CSS.</li>
-        </ul>
-      </div>
-      <!-- Verasys Technologies -->
-      <div class="timeline-item mb-4 fade-in-up">
-        <div class="timeline-header">
-          <div class="company-info">
-            <h4>Verasys Technologies Ltd.</h4>
-            <small class="text-muted">Mar 2021 - Apr 2022 | Mumbai, India</small>
+        <!-- Right Column: Dynamic Details -->
+        <div class="col-md-8">
+          <!-- Capitist LLC -->
+          <div class="exp-content active" id="capitist">
+            <h4 style="display: flex; justify-content: space-between;" class="mb-2">
+              IT Software Analyst 
+              <small class="text-muted">
+                Jun 2022 - May 2023 | Dubai, U.A.E.
+              </small>
+            </h4>
+            <ul>
+              <li>Engineered microservices using Spring Boot for back-end services and React.js for dynamic, responsive user interfaces.</li>
+              <li>Transformed nested codebases into 12+ containerized components using Docker & Kubernetes, improving scalability.</li>
+              <li>Worked extensively with AWS (EC2, S3) and Azure Kubernetes for scalable container management, deploying dynamic
+                auto-scaling to support over 3,000 daily symbols execution and reduce monthly cloud costs by $3K.</li>
+              <li>Built Jenkins pipelines to deploy 15+ APIs and data workflows, collaborating with cross-functional teams in Agile setup.</li>
+              <li>Enhanced CI/CD with SonarQube integration, multi-level testing (unit, UAT, DC, DR) and ensuring zero downtime.</li>
+            </ul>
           </div>
-          <span class="designation">Full Stack JAVA Developer</span>
-        </div>
-        <ul class="duties">
-          <li>Worked extensively with Spring MVC and Spring Security on portal modules, constantly refining and enhancing features.</li>
-          <li>Developed multi-level approval logic modules and workflows (email, video, and mobile) for enterprise eKYC portals.</li>
-          <li>Integrated UIDAI APIs (OTP, BIO, TOTP, FaceBio) with AES encryption, PKCS7 signatures, & SOAP/XML for data handling.</li>
-          <li>Created REST APIs for eSign (2.1 and 3.2) with HSM integration and advanced encryption/decryption mechanisms.</li>
-          <li>Designed complex stored procedures, triggers, schedulers to optimize live performance and resolved production issues.</li>
-          <li>Expertly built complex, fluid, and responsive UI pages for various modules using HTML, CSS, Bootstrap, AJAX, and
-            jQuery—earning consistent recognition for exceptional designs across all platforms of the portal.</li>
-        </ul>
-      </div>
-      <!-- Mphasis -->
-      <div class="timeline-item mb-4 fade-in-up">
-        <div class="timeline-header">
-          <div class="company-info">
-            <h4>Mphasis Ltd.</h4>
-            <small class="text-muted">Jan 2020 - Mar 2021 | Pune, India</small>
+          <!-- Verasys Technologies -->
+          <div class="exp-content" id="verasys">
+            <h4 style="display: flex; justify-content: space-between;" class="mb-2">
+              Full Stack JAVA Developer
+              <small class="text-muted">
+                Mar 2021 - Apr 2022 | Mumbai, India
+              </small>
+            </h4>
+            <ul>
+              <li>Integrated APIs (OTP, BIO, TOTP) with AES encryption, PKCS7 signatures, and SOAP/XML, with 100% data integrity</li>
+              <li>Built REST APIs for eSign (2.1 & 3.2) with HSM integration, implementing advanced encryption for secure transactions</li>
+              <li>Optimized database by updating stored procedures, triggers, and schedulers, reducing query execution time by 40%</li>
+              <li>Enhanced portal modules using Spring MVC and Spring Security, optimizing features for performance and security</li>
+              <li>Developed dynamic, responsive UI using HTML, CSS, Bootstrap, AJAX, and jQuery, delivering highly rated UX platforms</li>
+            </ul>
           </div>
-          <span class="designation">Technical Software Associate</span>
+          <!-- Mphasis Ltd. -->
+          <div class="exp-content" id="mphasis">
+            <h4 style="display: flex; justify-content: space-between;" class="mb-2">
+              Technical Software Associate
+              <small class="text-muted">
+                Jan 2020 - Mar 2021 | Pune, India
+              </small>
+            </h4>
+            <ul>
+              <li>Spearheaded patch management and server orchestration for American bank client, leveraging PowerShell scripting and VDI optimization, reducing deployment time by 50% while ensuring SLA compliant environment</li>
+              <li>Automated system-level optimizations and troubleshooting with custom shell scripting.</li>
+              <li>Performed log analysis and database management (HeidiSQL), developing scripts for real-time error detection</li>
+              <li>Recognized for supporting peers and delivering technical support, earning an appreciation letter for contributions</li>
+            </ul>
+          </div>
         </div>
-        <ul class="duties">
-          <li>Managed Citrix and Workspot virtual desktops, configuring secure access and automating workflows for operations.</li>
-          <li>Automated mission-critical system-level optimizations and proactive troubleshooting with custom shell scripting.</li>
-          <li>Performed log analysis and database management (HeidiSQL), creating scripts for error detection and alerts.</li>
-          <li>Led Citrix-to-Workspot VDI migration using automation scripts, patch management, and server orchestration.</li>
-          <li>Excelled as a collaborative team player, earned an appreciation letter for uplifting colleagues through effective technical
-            support and comprehensive knowledge transfers for new employees.</li>
-        </ul>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
 <!-- Projects Section -->
-<section id="projects" class="py-5">
+<section id="projects" class="py-5 fade-in-up">
   <div class="container">
-  <h2 class="mb-4">Projects</h2>
+    <h2 class="mb-4 text-center">Featured Projects</h2>
     <div class="row">
-    <!-- WeatherWise Project -->
-    <div class="col-md-6">
-      <div class="card project-card interactive mb-4 fade-in-up" style="position: relative;">
-        <div class="card-body">
-          <h5 class="card-title">WeatherWise</h5>
-          <p class="card-text">
-            Built a full-stack weather application with React (including global state via UserContext) and Node.js/Express, optimized
-            MongoDB queries with indexing and used Cron for scheduled data cleanup.
-            Implemented JWT-based authentication, real-time weather data retrieval from OpenWeather, and persistent search
-            history/favorites, offering a data-driven user experience.
+      <!-- WeatherWise Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>WeatherWise</h5>
+          <small class="text-muted">Mar 2024–Apr 2024</small>
+          <p>
+            Developed a full-stack weather platform using React (Context-based user management, React Router, localStorage) and Node.js/Express (RESTful routes, CORS), integrating MongoDB (Mongoose for user/favorites/search logs). Implemented JWT user sessions with bcrypt password hashing, scheduled data cleanup via node-cron, and consumed OpenWeather API for real-time forecasts.
           </p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Bcrypt</span>
+            <span class="tag">JWT</span>
+            <span class="tag">Cron</span>
+            <span class="tag">OpenWeather API</span>
+          </div>
         </div>
-        <a href="https://weatherwise-iota.vercel.app/" 
-        target="_blank" 
-        class="live-link">
-       Live Link
-     </a>
+      </div>
+      <!-- City Navigation & Emergency Route Planning Tool Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>City Navigation & Emergency Route Planning Tool</h5>
+          <small class="text-muted">Feb 2024–Mar 2024</small>
+          <p>
+            Engineered a City Navigation & Emergency Route Planning Tool with all-pairs shortest path computation, integrating OSMnx and NetworkX for graph-based road network modeling. Developed a Flask-based API to handle real-time requests, with Leaflet.js for interactive route visualization. Enabled dynamic blockage simulation, recalculating minimal routes by modifying graph weights and re-running Floyd-Warshall for real-time emergency response routing.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">OSMnx</span>
+            <span class="tag">NetworkX</span>
+            <span class="tag">Leaflet.js</span>
+          </div>
+        </div>
+      </div>
+      <!-- Optimal Delivery Route System Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>Optimal Delivery Route System</h5>
+          <small class="text-muted">Jan 2024–Feb 2024</small>
+          <p>
+            Developed a Traveling Salesperson Problem route optimization application using Nearest Neighbor, Brute Force, and Minimum Spanning Tree algorithms to compute and visualize efficient multi-stop delivery routes. Leveraged Google Maps DistanceMatrix for real-time distance calculations and used React with Chakra UI for interactive map rendering, enabling multi-route comparisons for logistic route planning.
+          </p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">Python</span>
+            <span class="tag">Google Maps API</span>
+            <span class="tag">Chakra UI</span>
+            <span class="tag">Chart.js</span>
+          </div>
+        </div>
+      </div>
+      <!-- SEO Keyword Tracker and Analyzer Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>SEO Keyword Tracker and Analyzer</h5>
+          <small class="text-muted">Mar 2024–Apr 2024</small>
+          <p>
+            Developed an interactive Search Engine Optimization (SEO) tool integrating multiple text-search algorithms (Rabin-Karp, Suffix Tree, Suffix Array, Naive String Matching, Knuth-Morris-Pratt (KMP)) for real-time keyword frequency extraction, WordCloud visualization, and performance comparison, leveraging Streamlit for a user-friendly interface, Natural Language Toolkit (NLTK) for text preprocessing, and BeautifulSoup for HTML parsing.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">WordCloud</span>
+            <span class="tag">BeautifulSoup</span>
+            <span class="tag">NLTK</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sorting Algorithm Efficiency Analyzer Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>Sorting Algorithm Efficiency Analyzer</h5>
+          <small class="text-muted">Apr 2024–May 2024</small>
+          <p>
+            Developed a GUI-based sorting algorithm analyzer integrating Bubble Sort, Insertion Sort, QuickSort, Heap Sort, Counting Sort, Radix Sort, Bucket Sort, and QuickSelect for performance benchmarking on user-defined datasets. Leveraged PyQt5 for interactive selection, Matplotlib with Seaborn for real-time execution time visualization, and implemented animated bar and line charts to compare sorting efficiencies dynamically.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">PyQt5</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Seaborn</span>
+          </div>
+        </div>
+      </div>
+      <!-- Airline Delay Prediction Project Card -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card">
+          <h5>Airline Delay Prediction</h5>
+          <small class="text-muted">Jan 2024–Jun 2024</small>
+          <p>
+            Developed an extensive big data pipeline for airline departure delay prediction using Python, Jupyter Notebook, Apache Spark/PySpark, and HDFS—performing rigorous data scrubbing, ETL (Extract, Transform, Load) with Pandas/NumPy, and distributed processing for high-quality insights. Engineered end-to-end Machine Learning workflows integrating polynomial features, Ridge regression, one-hot encoding, hyperparameter tuning (GridSearchCV/RandomizedSearchCV), and cross-validation, achieving a 35% boost in predictive accuracy.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Jupyter Notebook</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">scikit-learn</span>
+          </div>
+        </div>
       </div>
     </div>
-      <!-- Air-Traffic Delay Prediction Project -->
+  </div>
+</section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-5">
+    <div class="container">
+      <h2 class="mb-5 text-center">Skills & Expertise</h2>
+      <div class="row g-4">
+        <!-- Languages Card -->
+        <div class="col-md-4 fade-in-up">
+          <div class="skill-card p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-code-slash skill-icon me-2"></i>
+              <h5 class="mb-0 skill-title">Languages</h5>
+            </div>
+            <ul class="mb-0 skill-list">
+              <li>Advanced JAVA</li>
+              <li>Python</li>
+              <li>HTML, CSS, JavaScript</li>
+              <li>Node.js, React</li>
+              <li>SQL, RDBMS</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Tools Card -->
+        <div class="col-md-4 fade-in-up">
+          <div class="skill-card p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-tools skill-icon me-2"></i>
+              <h5 class="mb-0 skill-title">Tools</h5>
+            </div>
+            <ul class="mb-0 skill-list">
+              <li>Eclipse, MSSQL Server</li>
+              <li>Heidi SQL, VS Code</li>
+              <li>Citrix, ServiceNow</li>
+              <li>Workspot</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Frameworks Card -->
+        <div class="col-md-4 fade-in-up">
+          <div class="skill-card p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-layers skill-icon me-2"></i>
+              <h5 class="mb-0 skill-title">Frameworks & Libraries</h5>
+            </div>
+            <ul class="mb-0 skill-list">
+              <li>Spring Framework, Spring Boot, Spring Security</li>
+              <li>Bootstrap, React.js, Angular.js</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4 mt-4">
+        <!-- Databases Card -->
+        <div class="col-md-4 fade-in-up">
+          <div class="skill-card p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-hdd-stack skill-icon me-2"></i>
+              <h5 class="mb-0 skill-title">Databases & Big Data</h5>
+            </div>
+            <ul class="mb-0 skill-list">
+              <li>MySQL, PostgreSQL, MongoDB</li>
+              <li>Oracle Database</li>
+              <li>Apache Hadoop, Apache Spark</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Machine Learning Card -->
+        <div class="col-md-4 fade-in-up">
+          <div class="skill-card p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-cpu skill-icon me-2"></i>
+              <h5 class="mb-0 skill-title">Machine Learning</h5>
+            </div>
+            <ul class="mb-0 skill-list">
+              <li>scikit-learn</li>
+              <li>TensorFlow</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Project Management Card -->
+        <div class="col-md-4 fade-in-up">
+          <div class="skill-card p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-kanban skill-icon me-2"></i>
+              <h5 class="mb-0 skill-title">Project Management</h5>
+            </div>
+            <ul class="mb-0 skill-list">
+              <li>Trello, Jira, Microsoft Teams</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 fade-in-up">
+  <div class="container">
+    <h2 class="mb-4">Contact</h2>
+    <div class="row g-4">
+      <!-- Left Column: Contact Form -->
       <div class="col-md-6">
-        <div class="card project-card mb-4 fade-in-up">
+        <form id="contactForm" class="contact-form">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="name" 
+              placeholder="Your name" 
+              required 
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input 
+              type="email" 
+              class="form-control" 
+              id="email" 
+              placeholder="Your email" 
+              required 
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea 
+              class="form-control" 
+              id="message" 
+              rows="5" 
+              placeholder="Your message" 
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">
+            Send Message <i class="bi bi-send ms-1"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: Contact Info Card -->
+      <div class="col-md-6">
+        <!-- Modern Card with Shadow -->
+        <div class="card shadow-sm contact-info-card">
           <div class="card-body">
-            <h5 class="card-title">Air-Traffic Delay Prediction</h5>
-            <p class="card-text">
-              Processed and analyzed a 12GB airline dataset using PySpark, one-hot encoding, and polynomial features.
-              Applied Ridge regression to improve model accuracy, uncovering key delay patterns for actionable insights.
+            <h5 class="card-title mb-3">Contact Information</h5>
+            
+            <p class="mb-2">
+              <i class="bi bi-envelope me-2"></i>
+              <strong>Email:</strong>
+              <!-- Email link -->
+              <a href="mailto:pranav.chand@yahoo.com">pranav.chand@yahoo.com</a>
+            </p>
+            
+            <p class="mb-2">
+              <i class="bi bi-telephone-fill me-2"></i>
+              <strong>Phone:</strong> +1-657-631-8296
+            </p>
+            
+            <p class="mb-2">
+              <i class="bi bi-linkedin me-2"></i>
+              <strong>LinkedIn:</strong>
+              <!-- LinkedIn hyperlink -->
+              <a 
+                href="https://www.linkedin.com/in/pranavchand3272" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                pranavchand3272
+              </a>
+            </p>
+            
+            <p>
+              <i class="bi bi-github me-2"></i>
+              <strong>GitHub:</strong>
+              <!-- GitHub hyperlink -->
+              <a 
+                href="https://github.com/chandpranav" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                chandpranav
+              </a>
             </p>
           </div>
         </div>
@@ -211,265 +489,103 @@
   </div>
 </section>
 
-<!-- Skills Section -->
-<section id="skills" class="py-5">
-  <div class="container">
-    <h2 class="mb-5 text-center">Skills & Expertise</h2>
-    
-    <div class="row g-4"> 
-      <!-- Languages Card -->
-      <div class="col-md-4 fade-in-up">
-        <div class="skill-card p-4 h-100">
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-code-slash skill-icon me-2"></i>
-            <h5 class="mb-0 skill-title">Languages</h5>
-          </div>
-          <ul class="mb-0 skill-list">
-            <li>Advanced JAVA</li>
-            <li>Python</li>
-            <li>HTML, CSS, JavaScript</li>
-            <li>Node.js, React</li>
-            <li>SQL, RDBMS</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Tools Card -->
-      <div class="col-md-4 fade-in-up">
-        <div class="skill-card p-4 h-100">
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-tools skill-icon me-2"></i>
-            <h5 class="mb-0 skill-title">Tools</h5>
-          </div>
-          <ul class="mb-0 skill-list">
-            <li>Eclipse, MSSQL Server</li>
-            <li>Heidi SQL, Visual Studio Code</li>
-            <li>Citrix, ServiceNow</li>
-            <li>Workspot</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Frameworks Card -->
-      <div class="col-md-4 fade-in-up">
-        <div class="skill-card p-4 h-100">
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-layers skill-icon me-2"></i>
-            <h5 class="mb-0 skill-title">Frameworks & Libraries</h5>
-          </div>
-          <ul class="mb-0 skill-list">
-            <li>Spring Framework, Spring Boot, Spring Security</li>
-            <li>Bootstrap, React.js, Angular.js</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-    <div class="row g-4 mt-4"> 
-      <!-- Databases Card -->
-      <div class="col-md-4 fade-in-up">
-        <div class="skill-card p-4 h-100">
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-hdd-stack skill-icon me-2"></i>
-            <h5 class="mb-0 skill-title">Databases & Big Data</h5>
-          </div>
-          <ul class="mb-0 skill-list">
-            <li>MySQL, PostgreSQL, MongoDB</li>
-            <li>Oracle Database</li>
-            <li>Apache Hadoop, Apache Spark</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Machine Learning Card -->
-      <div class="col-md-4 fade-in-up">
-        <div class="skill-card p-4 h-100">
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-cpu skill-icon me-2"></i>
-            <h5 class="mb-0 skill-title">Machine Learning</h5>
-          </div>
-          <ul class="mb-0 skill-list">
-            <li>scikit-learn</li>
-            <li>TensorFlow</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Project Management Card -->
-      <div class="col-md-4 fade-in-up">
-        <div class="skill-card p-4 h-100">
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-kanban skill-icon me-2"></i>
-            <h5 class="mb-0 skill-title">Project Management</h5>
-          </div>
-          <ul class="mb-0 skill-list">
-            <li>Trello, Jira, Microsoft Teams</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-</section>
-
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-5 bg-dark text-white">
-    <div class="container">
-      <h2 class="mb-4">Contact</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <form id="contactForm">
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" id="name" class="form-control" required />
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" id="email" class="form-control" required />
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea id="message" class="form-control" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-          </form>
-        </div>
-        <div class="col-md-6">
-          <h5>Contact Information</h5>
-          <p><strong>Email:</strong> pranav.chand@yahoo.com</p>
-          <p><strong>Phone:</strong> +1-657-631-8296</p>
-          <p>
-            <strong>LinkedIn:</strong>
-            <a href="https://linkedin.com/in/pranavchand3272" target="_blank" class="text-white">pranavchand3272</a>
-          </p>
-          <p>
-            <strong>GitHub:</strong>
-            <a href="https://github.com/chandpranav" target="_blank" class="text-white">chandpranav</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom JavaScript for Contact Form Submission -->
+  <!-- Prism.js for Code Highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" 
+          integrity="sha512-9W+N7Y65y2v0iZgE/CSldkFT63dLqJFGqmv+f9M0GfXU0WrRfGy0TBCz30HcfX2x1NjK82dZlmAK5wOuwG6/3g==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Custom JS -->
   <script>
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const data = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value,
-      };
+    // Theme Slider
+    const themeSlider = document.getElementById('themeSlider');
+    const body = document.body;
+    
+    // Set initial slider value based on stored theme
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      themeSlider.value = 100;
+    } else {
+      themeSlider.value = 0;
+    }
+    
+    // Handle slider input for smooth transition
+    themeSlider.addEventListener('input', () => {
+      const sliderValue = parseInt(themeSlider.value);
+      
+      // Apply transition styles based on slider position
+      document.documentElement.style.setProperty('--theme-transition', sliderValue + '%');
+      
+      // Toggle dark mode class at threshold
+      if (sliderValue > 50) {
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+      }
+    });
 
-      fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
-      })
-      .then((response) => response.json())
-      .then((result) => {
+    // Fade-in on Scroll for Elements
+    document.addEventListener("DOMContentLoaded", function() {
+      const faders = document.querySelectorAll('.fade-in-up');
+      const options = { threshold: 0.1 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+      faders.forEach(el => observer.observe(el));
+    });
+
+    // Experience Tabs
+    document.addEventListener("DOMContentLoaded", function() {
+      const expButtons = document.querySelectorAll(".exp-btn");
+      const expContents = document.querySelectorAll(".exp-content");
+      expButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          expButtons.forEach(btn => btn.classList.remove("active"));
+          button.classList.add("active");
+          expContents.forEach(content => content.classList.remove("active"));
+          const targetId = button.getAttribute("data-target");
+          const targetContent = document.getElementById(targetId);
+          if (targetContent) targetContent.classList.add("active");
+        });
+      });
+    });
+
+    // Contact Form Validation
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm');
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        if (!name || !email || !message) {
+          alert('Please fill in all fields.');
+          return;
+        }
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          alert('Please enter a valid email address.');
+          return;
+        }
         alert('Message sent successfully!');
-        document.getElementById('contactForm').reset();
-      })
-      .catch((error) => {
-        alert('Error sending message.');
-        console.error('Error:', error);
+        contactForm.reset();
       });
     });
   </script>
 
-<script>
-  // Grab the toggle button and the <body> element
-  const themeToggle = document.getElementById('themeToggle');
-  const body = document.body;
+  <!-- Three.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- (Optional) GSAP CDN if you plan to animate with GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
 
-  // On page load, check localStorage for a saved theme
-  if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-    themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
-    themeToggle.innerHTML = '<i class="bi bi-sun-fill" style="color: #fff;"></i>';
-  } else {
-    themeToggle.innerHTML = '<i class="bi bi-moon-fill"></i>';
-    themeToggle.innerHTML = '<i class="bi bi-moon-fill" style="color: #fff;"></i>';
-  }
-
-  themeToggle.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  if (body.classList.contains('dark-mode')) {
-    localStorage.setItem('theme', 'dark');
-    // Use a sun icon with white color in dark mode
-    themeToggle.innerHTML = '<i class="bi bi-sun-fill" style="color: #fff;"></i>';
-  } else {
-    localStorage.setItem('theme', 'light');
-    // Use a moon icon with black color in light mode
-    themeToggle.innerHTML = '<i class="bi bi-moon-fill" style="color: #fff;"></i>';
-  }
-});
-
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Grab all the fade-in-up elements
-    const faders = document.querySelectorAll('.fade-in-up');
-
-    // Create an IntersectionObserver
-    const options = {
-      threshold: 0.1 // trigger when 10% of the element is visible
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Add the .show class
-          entry.target.classList.add('show');
-          // Stop observing once it’s visible (so it doesn’t hide again)
-          observer.unobserve(entry.target);
-        }
-      });
-    }, options);
-
-    // Observe each .fade-in-up element
-    faders.forEach(el => {
-      observer.observe(el);
-    });
-  });
-</script>
-
-<script>
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const data = {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
-    message: document.getElementById('message').value,
-  };
-
-  fetch('/api/contact', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  })
-  .then(response => response.text())
-  .then(result => {
-    alert('Message sent successfully!');
-    document.getElementById('contactForm').reset();
-  })
-  .catch(error => {
-    alert('Error sending message.');
-    console.error(error);
-  });
-});
-
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-9W+N7Y65y2v0iZgE/CSldkFT63dLqJFGqmv+f9M0GfXU0WrRfGy0TBCz30HcfX2x1NjK82dZlmAK5wOuwG6/3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+<!-- Your custom script -->
+<script src="script.js"></script>
 </body>
 </html>

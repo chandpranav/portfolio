@@ -1,0 +1,13 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Maven target folder
+target/
+
+application.properties
+
+# Ignore all files in the logs directory
+logs/*
+
+# Ignore all files in the logs directory
+logs/*
