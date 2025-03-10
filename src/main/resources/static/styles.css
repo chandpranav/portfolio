@@ -245,7 +245,7 @@ body.dark-mode .code-box {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* Properly Aligned Pill Header */
+/* Navbar Styles */
 .navbar {
   background-color: var(--navbar-bg) !important;
   border-radius: 50px;
@@ -261,10 +261,70 @@ body.dark-mode .code-box {
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
   transition: background-color var(--theme-transition);
 }
+
+/* Mobile Navigation Styles */
+@media (max-width: 991px) {
+  .navbar {
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+    top: 0;
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-toggler {
+    display: block;
+    margin-left: auto;
+    border: none;
+    padding: 0.5rem;
+  }
+
+  .navbar-collapse {
+    background-color: var(--navbar-bg);
+    border-radius: 0 0 15px 15px;
+    padding: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .navbar-nav {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .theme-pill-container {
+    margin: 0.5rem auto;
+  }
+}
+
+/* Container padding adjustments for mobile */
 .navbar .container {
-  padding-left: 30mm;
-  padding-right: 30mm;
-  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 992px) {
+  .navbar .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+/* Ensure the navbar toggle button is visible in dark mode */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+body.dark-mode .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
 .navbar-brand {
